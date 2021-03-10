@@ -8,10 +8,19 @@ const connect = function () {
 
   conn.setEncoding('utf8');
 
-  conn.on('data', (dataFromServer) => {
+  conn.on("data", (dataFromServer) => {
     console.log(dataFromServer);
   })
+
+  conn.on("connect", () => {
+    console.log('Successfully connected to game server')
+  })
+
+  conn.on("connect", () => {
+    conn.write('Name:  CAW');
+  })
+
   return conn;
-}
+};
 
 module.exports = connect;
